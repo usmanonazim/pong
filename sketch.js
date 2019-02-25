@@ -1,9 +1,9 @@
 //simple pong game
+//I would like to add random speed for y
 //add AI
 //better animations
 //add trail to pong ball
 //add win condition(score to win?)
-//add trail to both paddles
 let font,
   fontsize = 40;
 
@@ -53,11 +53,14 @@ function draw() {
   rectMode(CENTER);
   noStroke();
   rect(paddle1.x, paddle1.y, paddle1.w, paddle1.h, paddle1.r);
+  push();
+  fill(0);
   rect(paddle2.x, paddle2.y, paddle2.w, paddle2.h, paddle2.r);
+  pop();
 
   //pong ball
   push();
-  var col = map(posX, 0, width, 255, 0);
+  var col = map(posX, 0, width, 0, 255);
   fill(col);
   ellipse(posX, posY, 20);
   pop();
@@ -104,14 +107,14 @@ function draw() {
   } else if (keyIsDown(UP_ARROW) && paddle1.y > 50) {
     paddle1.y -= 6;
   }
-  paddle2.y = posY; //comment out to play 2 player
-  //key 's' -- uncomment below for 2 player
-  /*if (keyIsDown(83) && paddle2.y < height - 50) {
-    paddle2.y += 6;
+  paddle2.y = posY;
+  //key 's'
+  /*if(keyIsDown(83) && paddle2.y < height -50){
+  	paddle2.y+=6;
   }
   //key 'w'
-  else if (keyIsDown(87) && paddle2.y > 50) {
-    paddle2.y -= 6;
+  else if(keyIsDown(87) && paddle2.y >50){
+  	paddle2.y -= 6;
   }*/
 }
 
