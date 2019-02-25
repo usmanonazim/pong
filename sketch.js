@@ -33,6 +33,7 @@ var player1 = 0;
 var player2 = 0;
 function setup() {
   createCanvas(width, height);
+
   textFont();
   textSize(fontsize);
   textAlign(CENTER, CENTER);
@@ -43,11 +44,16 @@ function draw() {
   //r = map(posY, 0, height,  0, 255);
   //map x pos of ball to green
   //b = map(posX, 0, width, 255, 0);
-  background(100);
+  background(0);
+  push();
+  fill(255);
+  rectMode(CORNER);
+  rect(width / 2, 0, width / 2, height);
+  pop();
 
   push();
-  textAlign(RIGHT);
-  drawWords(width / 2 + 25);
+  textAlign(CENTER);
+  drawWords(150);
   pop();
 
   rectMode(CENTER);
@@ -57,11 +63,14 @@ function draw() {
   fill(0);
   rect(paddle2.x, paddle2.y, paddle2.w, paddle2.h, paddle2.r);
   pop();
+  stroke(255, 100);
+  line(width / 2, 0, width / 2, height);
 
   //pong ball
   push();
-  var col = map(posX, 0, width, 0, 255);
+  var col = map(posX, 0, width, 255, 0);
   fill(col);
+  noStroke();
   ellipse(posX, posY, 20);
   pop();
 
@@ -151,15 +160,22 @@ function keyPressed() {
 function drawWords(x) {
   if (player1 < 7 && player2 < 7) {
     fill(255);
-    text(player1 + " : " + player2, x, 80);
+    text(player1, x, 80);
+    fill(0);
+    text(player2, x + width / 2, 70);
   } else {
     if (player1 == 7) {
-      text("Player 1 has won!", width / 2 + 120, 80);
+      fill(255);
+      text("Winner!", x, 80);
     } else {
-      text("Player 2 has won!", width / 2 + 120, 80);
+      fill(0);
+      text("Winner!", width / 2 + x, 80);
     }
-
-    fill(255);
-    text('Press "Backspace" to restart', width / 2 + 240, 120);
+    fill(50);
+    text('Press "Backspace" to restart', width / 2, 120);
   }
 }
+//make left side black,
+//ball fade to white
+//right side white,
+//ball fade to black
