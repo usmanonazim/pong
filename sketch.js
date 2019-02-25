@@ -1,9 +1,10 @@
 //simple pong game
 //I would like to add random speed for y
-//add AI
+//add AI**
 //better animations
 //add trail to pong ball
-//add win condition(score to win?)
+//add win condition(score to win?) **
+
 let font,
   fontsize = 40;
 
@@ -80,14 +81,14 @@ function draw() {
     posY >= paddle2.y - 55 &&
     posY <= paddle2.y + 55
   ) {
-    speedX = speedX * -1.01;
+    speedX = speedX * -1.05;
   }
   if (
     posX <= paddle1.x + 20 &&
     posY >= paddle1.y - 55 &&
     posY <= paddle1.y + 55
   ) {
-    speedX = speedX * -1.01;
+    speedX = speedX * -1.05;
   }
   //if ball touches top or bottom of canvas
   if (posY > height || posY <= 0) {
@@ -114,19 +115,19 @@ function draw() {
   posX = posX + speedX;
   posY = posY + speedY;
 
-  if (keyIsDown(DOWN_ARROW) && paddle1.y < height - 50) {
-    paddle1.y += 6;
-  } else if (keyIsDown(UP_ARROW) && paddle1.y > 50) {
-    paddle1.y -= 6;
-  }
-  //paddle2.y = posY;
-  //key 's'
-  if (keyIsDown(83) && paddle2.y < height - 50) {
+  if (keyIsDown(DOWN_ARROW) && paddle2.y < height - 50) {
     paddle2.y += 6;
+  } else if (keyIsDown(UP_ARROW) && paddle2.y > 50) {
+    paddle2.y -= 6;
+  }
+  // paddle2.y = posY;
+  //key 's'
+  if (keyIsDown(83) && paddle1.y < height - 50) {
+    paddle1.y += 6;
   }
   //key 'w'
-  else if (keyIsDown(87) && paddle2.y > 50) {
-    paddle2.y -= 6;
+  else if (keyIsDown(87) && paddle1.y > 50) {
+    paddle1.y -= 6;
   }
 }
 
@@ -171,7 +172,7 @@ function drawWords(x) {
       fill(0);
       text("Winner!", width / 2 + x, 80);
     }
-    fill(50);
+    fill(255, 0, 0);
     text('Press "Backspace" to restart', width / 2, 120);
   }
 }
