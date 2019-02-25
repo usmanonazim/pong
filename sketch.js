@@ -6,7 +6,7 @@
 //add win condition(score to win?) **
 
 let font,
-  fontsize = 40;
+  fontsize = 35;
 
 var paddle1 = {
   x: 10,
@@ -91,7 +91,7 @@ function draw() {
     speedX = speedX * -1.05;
   }
   //if ball touches top or bottom of canvas
-  if (posY > height || posY <= 0) {
+  if (posY > height - 10 || posY <= 10) {
     speedY = speedY * -1;
   }
   if (posX > width || posX < 0) {
@@ -173,7 +173,7 @@ function drawWords(x) {
       text("Winner!", width / 2 + x, 80);
     }
     fill(255, 0, 0);
-    text('Press "Backspace" to restart', width / 2, 120);
+    text('Press "Backspace" to restart', width / 2 + 1, 120);
   }
 }
 //make left side black,
