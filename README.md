@@ -1,2 +1,3 @@
 # pong
-JS pong game
+JS pong game - first JS project
+
