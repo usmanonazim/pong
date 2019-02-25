@@ -131,9 +131,9 @@ function draw() {
   }
 }
 
-//press return to start once resets
+//press spacebar to start once resets
 function keyPressed() {
-  if (keyCode === RETURN && speedX == 0 && player1 < 7 && player2 < 7) {
+  if (keyCode === 32 && speedX == 0 && player1 < 7 && player2 < 7) {
     //paddle1.y = posY;
     let dirX = random(-1, 1);
     if (dirX > 0) {
