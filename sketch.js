@@ -97,6 +97,8 @@ function draw() {
     posY = height / 2;
     speedX = 0;
     speedY = 0;
+    paddle1.y = posX;
+    paddle2.y = posY;
   }
 
   posX = posX + speedX;
@@ -121,6 +123,7 @@ function draw() {
 //press return to start once resets
 function keyPressed() {
   if (keyCode === RETURN && speedX == 0) {
+    //paddle1.y = posY;
     let dir = random(-1, 1);
     if (dir > 0) {
       speedX = 5;
