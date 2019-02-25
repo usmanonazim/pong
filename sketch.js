@@ -127,10 +127,10 @@ function keyPressed(){
 }
 
 function drawWords(x){
-  if(player1 <7 || player2 <7){
+  
 	fill(20);
 	text(player1 + ' : ' + player2, x, 80);
-  }
+  
   
   
   
