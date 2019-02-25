@@ -104,14 +104,15 @@ function draw() {
   } else if (keyIsDown(UP_ARROW) && paddle1.y > 50) {
     paddle1.y -= 6;
   }
-  //key 's'
-  if (keyIsDown(83) && paddle2.y < height - 50) {
+  paddle2.y = posY; //comment out to play 2 player
+  //key 's' -- uncomment below for 2 player
+  /*if (keyIsDown(83) && paddle2.y < height - 50) {
     paddle2.y += 6;
   }
   //key 'w'
   else if (keyIsDown(87) && paddle2.y > 50) {
     paddle2.y -= 6;
-  }
+  }*/
 }
 
 //press return to start once resets
