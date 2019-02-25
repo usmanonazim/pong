@@ -60,12 +60,11 @@ function draw() {
   var col = map(posX, 0, width, 255, 0);
   fill(col);
   ellipse(posX, posY, 20);
-
   pop();
 
   //if ball touches paddle, reverse direction
   if (
-    posX >= paddle2.x - 19 &&
+    posX >= paddle2.x - 20 &&
     posY >= paddle2.y - 55 &&
     posY <= paddle2.y + 55
   ) {
@@ -133,6 +132,6 @@ function keyPressed() {
 }
 
 function drawWords(x) {
-  fill(20);
+  fill(255, 80, 80);
   text(player1 + " : " + player2, x, 80);
 }
