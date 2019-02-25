@@ -60,7 +60,7 @@ function draw() {
   var col = map(posX, 0, width, 255, 0);
   fill(col);
   ellipse(posX, posY, 20);
-  print("its working");
+
   pop();
 
   //if ball touches paddle, reverse direction
