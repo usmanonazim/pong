@@ -71,14 +71,14 @@ function draw() {
     posY >= paddle2.y - 55 &&
     posY <= paddle2.y + 55
   ) {
-    speedX = speedX * -1.05;
+    speedX = speedX * -1.01;
   }
   if (
     posX <= paddle1.x + 18.5 &&
     posY >= paddle1.y - 55 &&
     posY <= paddle1.y + 55
   ) {
-    speedX = speedX * -1.05;
+    speedX = speedX * -1.01;
   }
   //if ball touches top or bottom of canvas
   if (posY > height || posY <= 0) {
@@ -123,19 +123,34 @@ function keyPressed() {
   if (keyCode === RETURN && speedX == 0) {
     let dir = random(-1, 1);
     if (dir > 0) {
-      speedX = 4;
+      speedX = 5;
     } else {
-      speedX = -4;
+      speedX = -5;
     }
     speedY = random(-4, 4);
   }
-  if (keyCode == BACKSPACE && speedX == 0) {
+  if (keyCode == BACKSPACE) {
+    posX = width / 2;
+    posY = height / 2;
+    speedX = 0;
+    speedY = 0;
     player1 = 0;
     player2 = 0;
   }
 }
 
 function drawWords(x) {
-  fill(255, 80, 80);
-  text(player1 + " : " + player2, x, 80);
+  if (player1 < 7 && player2 < 7) {
+    fill(255, 80, 80);
+    text(player1 + " : " + player2, x, 80);
+  } else {
+    if (player1 == 7) {
+      text("Player 1 has won!", width / 2 + 120, 80);
+    } else {
+      text("Player 2 has won!", width / 2 + 120, 80);
+    }
+
+    fill(200, 0, 0);
+    text('Press "Backspace" to restart', width / 2 + 240, 120);
+  }
 }
