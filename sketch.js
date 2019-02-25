@@ -1,8 +1,8 @@
 //simple pong game
-//I would like to add random speed for y
+//add random speed for y **
 //add AI**
 //better animations
-//add trail to pong ball
+//add trail to pong ball - TODO
 //add win condition(score to win?) **
 
 let font,
@@ -24,33 +24,33 @@ var paddle2 = {
   r: 20
 };
 
-var speedX = 0;
-var speedY = 0;
 let width = 600;
 let height = 600;
-var posX = width / 2;
-var posY = height / 2;
+
 var player1 = 0;
 var player2 = 0;
+var ball;
+
 function setup() {
   createCanvas(width, height);
 
   textFont();
   textSize(fontsize);
   textAlign(CENTER, CENTER);
+  ball = new Ball(300, 300);
+  this.ball.xspeed = 0;
+  this.ball.yspeed = 0;
 }
 
 function draw() {
-  //map y pos of ball to red
-  //r = map(posY, 0, height,  0, 255);
-  //map x pos of ball to green
-  //b = map(posX, 0, width, 255, 0);
   background(0);
   push();
   fill(255);
   rectMode(CORNER);
   rect(width / 2, 0, width / 2, height);
   pop();
+  ball.show();
+  ball.update();
 
   push();
   textAlign(CENTER);
@@ -59,61 +59,61 @@ function draw() {
 
   rectMode(CENTER);
   noStroke();
+  push();
+  fill(255);
   rect(paddle1.x, paddle1.y, paddle1.w, paddle1.h, paddle1.r);
+  pop();
   push();
   fill(0);
   rect(paddle2.x, paddle2.y, paddle2.w, paddle2.h, paddle2.r);
   pop();
-  stroke(255, 100);
-  line(width / 2, 0, width / 2, height);
 
   //pong ball
-  push();
-  var col = map(posX, 0, width, 255, 0);
-  fill(col);
-  noStroke();
-  ellipse(posX, posY, 20);
-  pop();
 
   //if ball touches paddle, reverse direction
+
   if (
-    posX >= paddle2.x - 20 &&
-    posY >= paddle2.y - 55 &&
-    posY <= paddle2.y + 55
+    this.ball.x <= paddle1.x + 15 &&
+    this.ball.y >= paddle1.y - 55 &&
+    this.ball.y <= paddle1.y + 55
   ) {
-    speedX = speedX * -1.05;
+    if (this.ball.x < paddle1.x + 15) {
+      this.ball.x += 5;
+    }
+    this.ball.xspeed *= -1.03;
   }
   if (
-    posX <= paddle1.x + 20 &&
-    posY >= paddle1.y - 55 &&
-    posY <= paddle1.y + 55
+    this.ball.x > paddle2.x - 15 &&
+    this.ball.y >= paddle2.y - 55 &&
+    this.ball.y <= paddle2.y + 55
   ) {
-    speedX = speedX * -1.05;
+    if (this.ball.x > paddle2.x - 15) {
+      this.ball.x -= 5;
+    }
+    this.ball.xspeed *= -1.03;
+  }
+  if (this.ball.y > height || this.ball.y < 0) {
+    this.ball.yspeed *= -1;
   }
   //if ball touches top or bottom of canvas
-  if (posY > height - 10 || posY <= 10) {
-    speedY = speedY * -1;
-  }
-  if (posX > width || posX < 0) {
+
+  if (this.ball.x > width || this.ball.x < 0) {
     //if ball goes over right side
-    if (posX > width) {
+    if (this.ball.x > width) {
       player1++;
     }
     //if ball goes over left side
-    if (posX < 0) {
+    if (this.ball.x < 0) {
       player2++;
     }
-    posX = width / 2;
-    posY = height / 2;
-    speedX = 0;
-    speedY = 0;
+    this.ball.x = width / 2;
+    this.ball.y = height / 2;
+    this.ball.xspeed = 0;
+    this.ball.yspeed = 0;
     //reset paddle positions
-    paddle1.y = posX;
-    paddle2.y = posY;
+    paddle1.y = this.ball.y;
+    paddle2.y = this.ball.y;
   }
-
-  posX = posX + speedX;
-  posY = posY + speedY;
 
   if (keyIsDown(DOWN_ARROW) && paddle2.y < height - 50) {
     paddle2.y += 6;
@@ -131,28 +131,27 @@ function draw() {
   }
 }
 
-//press spacebar to start once resets
+//press space to start once resets
 function keyPressed() {
-  if (keyCode === 32 && speedX == 0 && player1 < 7 && player2 < 7) {
-    //paddle1.y = posY;
+  if (keyCode === 32 && this.ball.xspeed == 0 && player1 < 7 && player2 < 7) {
     let dirX = random(-1, 1);
     if (dirX > 0) {
-      speedX = 5;
+      this.ball.xspeed = 5;
     } else {
-      speedX = -5;
+      this.ball.xspeed = -5;
     }
     let dirY = random(-1, 1);
     if (dirY > 0) {
-      speedY = random(1, 4);
+      this.ball.yspeed = random(1, 4);
     } else {
-      speedY = random(-4, -1);
+      this.ball.yspeed = random(-4, -1);
     }
   }
   if (keyCode == BACKSPACE) {
-    posX = width / 2;
-    posY = height / 2;
-    speedX = 0;
-    speedY = 0;
+    this.ball.x = width / 2;
+    this.ball.y = height / 2;
+    this.ball.xspeed = 0;
+    this.ball.yspeed = 0;
     player1 = 0;
     player2 = 0;
   }
