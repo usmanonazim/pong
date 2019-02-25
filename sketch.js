@@ -1,9 +1,9 @@
 //simple pong game
-//I would like to add random speed for y
 //add AI
 //better animations
 //add trail to pong ball
 //add win condition(score to win?)
+//add trail to both paddles
 let font,
   fontsize = 40;
 
