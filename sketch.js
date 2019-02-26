@@ -8,7 +8,7 @@
 let font,
   fontsize = 35;
 
-var paddle1 = {
+var left = {
   x: 10,
   y: 300,
   w: 20,
@@ -16,7 +16,7 @@ var paddle1 = {
   r: 20
 };
 
-var paddle2 = {
+var right = {
   x: 589,
   y: 300,
   w: 20,
@@ -61,11 +61,11 @@ function draw() {
   noStroke();
   push();
   fill(255);
-  rect(paddle1.x, paddle1.y, paddle1.w, paddle1.h, paddle1.r);
+  rect(left.x, left.y, left.w, left.h, left.r);
   pop();
   push();
   fill(0);
-  rect(paddle2.x, paddle2.y, paddle2.w, paddle2.h, paddle2.r);
+  rect(right.x, right.y, right.w, right.h, right.r);
   pop();
 
   //pong ball
@@ -73,21 +73,21 @@ function draw() {
   //if ball touches paddle, reverse direction
 
   if (
-    this.ball.x <= paddle1.x + 15 &&
-    this.ball.y >= paddle1.y - 55 &&
-    this.ball.y <= paddle1.y + 55
+    this.ball.x <= left.x + 15 &&
+    this.ball.y >= left.y - 55 &&
+    this.ball.y <= left.y + 55
   ) {
-    if (this.ball.x < paddle1.x + 15) {
+    if (this.ball.x < left.x + 15) {
       this.ball.x += 5;
     }
     this.ball.xspeed *= -1.03;
   }
   if (
-    this.ball.x > paddle2.x - 15 &&
-    this.ball.y >= paddle2.y - 55 &&
-    this.ball.y <= paddle2.y + 55
+    this.ball.x > right.x - 15 &&
+    this.ball.y >= right.y - 55 &&
+    this.ball.y <= right.y + 55
   ) {
-    if (this.ball.x > paddle2.x - 15) {
+    if (this.ball.x > right.x - 15) {
       this.ball.x -= 5;
     }
     this.ball.xspeed *= -1.03;
@@ -111,23 +111,23 @@ function draw() {
     this.ball.xspeed = 0;
     this.ball.yspeed = 0;
     //reset paddle positions
-    paddle1.y = this.ball.y;
-    paddle2.y = this.ball.y;
+    left.y = this.ball.y;
+    right.y = this.ball.y;
   }
 
-  if (keyIsDown(DOWN_ARROW) && paddle2.y < height - 50) {
-    paddle2.y += 6;
-  } else if (keyIsDown(UP_ARROW) && paddle2.y > 50) {
-    paddle2.y -= 6;
+  if (keyIsDown(DOWN_ARROW) && right.y < height - 50) {
+    right.y += 6;
+  } else if (keyIsDown(UP_ARROW) && right.y > 50) {
+    right.y -= 6;
   }
-  // paddle2.y = posY;
+  // right.y = posY;
   //key 's'
-  if (keyIsDown(83) && paddle1.y < height - 50) {
-    paddle1.y += 6;
+  if (keyIsDown(83) && left.y < height - 50) {
+    left.y += 6;
   }
   //key 'w'
-  else if (keyIsDown(87) && paddle1.y > 50) {
-    paddle1.y -= 6;
+  else if (keyIsDown(87) && left.y > 50) {
+    left.y -= 6;
   }
 }
 
