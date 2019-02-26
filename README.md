@@ -20,4 +20,4 @@ Player 2:
 
 
 
-http://usmanomar.me/pong/
+https://usmanonazim.github.io/pong/
