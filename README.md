@@ -13,8 +13,8 @@ Player 1:
 
 
 Player 2:
-up arrow - up
-down arrow - down
+'up arrow' - up
+'down arrow' - down
 
 
 
