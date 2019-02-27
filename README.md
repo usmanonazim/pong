@@ -17,6 +17,7 @@ Player 2:
 'down arrow' - down
 
 
+![Alt Text](ezgif.com-video-to-gif.gif)
 
 
 
