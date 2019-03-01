@@ -17,7 +17,7 @@ Player 2:
 'down arrow' - down
 
 
-![Alt Text](pong.gif)
+![Gif of game in action](pong.gif)
 
 
 
