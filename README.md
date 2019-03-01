@@ -21,4 +21,4 @@ Player 2:
 
 
 
-[Click To Play In Browser :)]https://usmanonazim.github.io/pong/
+[Click To Play In Browser :)](https://usmanonazim.github.io/pong/)
