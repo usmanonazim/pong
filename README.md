@@ -17,8 +17,8 @@ Player 2:
 'down arrow' - down
 
 
-![Alt Text](ezgif.com-video-to-gif.gif)
+![Alt Text](pong.gif)
 
 
 
-https://usmanonazim.github.io/pong/
+[Click To Play In Browser :)]https://usmanonazim.github.io/pong/
